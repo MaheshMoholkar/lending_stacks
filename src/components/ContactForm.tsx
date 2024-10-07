@@ -41,13 +41,12 @@ const ContactForm: React.FC = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const { data: result, error } = await supabase
-        .from("contact_form")
-        .insert([data]);
+      const { error } = await supabase.from("contact_form").insert([data]);
 
       if (error) throw error;
       showToast("Form Submitted!", "SUCCESS");
     } catch (error) {
+      console.log(error);
       showToast("Internal Server Error!", "ERROR");
     }
   };
