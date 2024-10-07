@@ -58,7 +58,7 @@ const Footer = ({ styles }: { styles: string }) => {
               variants={SlideDown(0.2, 50)}
               initial="initial"
               whileInView="animate"
-              src="/logo.png"
+              src="logo.png"
               alt="Lending Stacks"
               className="w-32"
             />
