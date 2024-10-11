@@ -1,8 +1,5 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-function Button({ text, delay }: { text: string; delay: number }) {
+function Button({ text }: { text: string }) {
   const router = useRouter();
   const url = text.replace(" ", "-").toLowerCase();
   return (

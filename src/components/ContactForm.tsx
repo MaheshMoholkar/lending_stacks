@@ -9,6 +9,7 @@ import Toast from "./ui/Toast";
 type FormData = {
   first_name: string;
   last_name: string;
+  country_code: string;
   phone: string;
   role: "individual" | "business";
   company_name: string;
@@ -103,16 +104,36 @@ const ContactForm: React.FC = () => {
             >
               Phone*
             </label>
-            <input
-              {...register("phone", { required: "Phone is required" })}
-              type="tel"
-              id="phone"
-              className="px-2 mt-1 block w-2/3 rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
+            <div className="flex items-center mt-1">
+              <select
+                {...register("country_code", {
+                  required: "Country code is required",
+                })}
+                id="country_code"
+                defaultValue="+1"
+                className="px-2 py-1 rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 mr-2"
+              >
+                <option value="+1">🇺🇸 +1 (US)</option>
+                <option value="+44">🇬🇧 +44 (UK)</option>
+                <option value="+91">🇮🇳 +91 (India)</option>
+              </select>
+              <input
+                {...register("phone", { required: "Phone is required" })}
+                type="tel"
+                id="phone"
+                className="px-2 block w-2/3 rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              />
+            </div>
+            {errors.country_code && (
+              <span className="text-red-500">
+                {errors.country_code.message}
+              </span>
+            )}
             {errors.phone && (
               <span className="text-red-500">{errors.phone.message}</span>
             )}
           </div>
+
           <div>
             <label htmlFor="role" className="block font-semibold text-gray-700">
               I am a...*

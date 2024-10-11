@@ -35,7 +35,7 @@ const Header = ({ styles }: { styles: string }) => {
             className="w-32 max-w-full cursor-pointer"
           />
           <nav className="hidden md:flex space-x-4">
-            {navLinks.map((link, index) => (
+            {navLinks.map((link, _) => (
               <a
                 key={link.name}
                 onClick={() => handleNavigation(link.path)}
@@ -75,7 +75,7 @@ const Header = ({ styles }: { styles: string }) => {
             </button>
           </div>
           <nav className="flex flex-col space-y-8 px-4 py-4">
-            {navLinks.map((link, index) => (
+            {navLinks.map((link, _) => (
               <a
                 key={link.name}
                 onClick={() => handleNavigation(link.path)}
