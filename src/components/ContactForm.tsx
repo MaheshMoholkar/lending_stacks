@@ -53,7 +53,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="m-12 border-2 border-zinc-500 p-4 md:p-8 lg:px-12 lg:mt-56 bg-white shadow-md">
+    <div className="max-w-lg m-12 border-2 border-zinc-500 p-4 md:p-8 lg:px-12 lg:mt-56 bg-white shadow-md">
       <h2 className="text-3xl font-bold mb-6 text-center text-zinc-500">
         Contact Form
       </h2>
@@ -72,7 +72,7 @@ const ContactForm: React.FC = () => {
               })}
               type="text"
               id="first_name"
-              className="px-2 mt-1 block w-2/3 rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="px-2 py-1 mt-1 block w-full rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
             {errors.first_name && (
               <span className="text-red-500">{errors.first_name.message}</span>
@@ -89,15 +89,15 @@ const ContactForm: React.FC = () => {
               {...register("last_name", { required: "Last name is required" })}
               type="text"
               id="last_name"
-              className="px-2 mt-1 block w-2/3 rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="px-2 py-1 mt-1 block w-full rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
             {errors.last_name && (
               <span className="text-red-500">{errors.last_name.message}</span>
             )}
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-8">
-          <div>
+        <div>
+          <div className="flex-col gap-8">
             <label
               htmlFor="phone"
               className="block font-semibold text-gray-700"
@@ -121,7 +121,7 @@ const ContactForm: React.FC = () => {
                 {...register("phone", { required: "Phone is required" })}
                 type="tel"
                 id="phone"
-                className="px-2 block w-2/3 rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                className="px-2 py-1 block w-full rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               />
             </div>
             {errors.country_code && (
@@ -133,7 +133,8 @@ const ContactForm: React.FC = () => {
               <span className="text-red-500">{errors.phone.message}</span>
             )}
           </div>
-
+        </div>
+        <div className="grid grid-cols-2 gap-8">
           <div>
             <label htmlFor="role" className="block font-semibold text-gray-700">
               I am a...*
@@ -141,7 +142,7 @@ const ContactForm: React.FC = () => {
             <select
               {...register("role", { required: "Please select an option" })}
               id="role"
-              className="px-2 mt-1 block w-2/3 rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="px-2 py-1 mt-1 block w-full rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             >
               <option value="">Select...</option>
               <option value="individual">Individual</option>
@@ -149,29 +150,6 @@ const ContactForm: React.FC = () => {
             </select>
             {errors.role && (
               <span className="text-red-500">{errors.role.message}</span>
-            )}
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-8">
-          <div>
-            <label
-              htmlFor="company_name"
-              className="block font-semibold text-gray-700"
-            >
-              Company Name*
-            </label>
-            <input
-              {...register("company_name", {
-                required: "Company name is required",
-              })}
-              type="text"
-              id="company_name"
-              className="px-2 mt-1 block w-2/3 rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            />
-            {errors.company_name && (
-              <span className="text-red-500">
-                {errors.company_name.message}
-              </span>
             )}
           </div>
           <div>
@@ -187,12 +165,31 @@ const ContactForm: React.FC = () => {
               })}
               type="text"
               id="loan_amount"
-              className="px-2 mt-1 block w-2/3 rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="px-2 py-1 mt-1 block w-full rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
             {errors.loan_amount && (
               <span className="text-red-500">{errors.loan_amount.message}</span>
             )}
           </div>
+        </div>
+        <div>
+          <label
+            htmlFor="company_name"
+            className="block font-semibold text-gray-700"
+          >
+            Company Name*
+          </label>
+          <input
+            {...register("company_name", {
+              required: "Company name is required",
+            })}
+            type="text"
+            id="company_name"
+            className="px-2 py-1 mt-1 block w-full rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          />
+          {errors.company_name && (
+            <span className="text-red-500">{errors.company_name.message}</span>
+          )}
         </div>
         <div>
           <label htmlFor="email" className="block font-semibold text-gray-700">
@@ -208,7 +205,7 @@ const ContactForm: React.FC = () => {
             })}
             type="email"
             id="email"
-            className="px-2 mt-1 block w-full rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            className="px-2 py-1 mt-1 block w-full rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           />
           {errors.email && (
             <span className="text-red-500">{errors.email.message}</span>
@@ -225,7 +222,7 @@ const ContactForm: React.FC = () => {
             {...register("website")}
             type="url"
             id="website"
-            className="px-2 mt-1 block w-full rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            className="px-2 py-1 mt-1 block w-full rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           />
         </div>
         <div>
@@ -236,7 +233,7 @@ const ContactForm: React.FC = () => {
             {...register("memo")}
             id="memo"
             rows={3}
-            className="px-2 mt-1 block w-full rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            className="px-2 py-1 mt-1 block w-full rounded-xl bg-zinc-200 border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
           ></textarea>
         </div>
         <div>

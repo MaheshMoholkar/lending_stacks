@@ -1,3 +1,5 @@
+"use client";
+
 import { useRouter } from "next/navigation";
 function Button({ text }: { text: string }) {
   const router = useRouter();
