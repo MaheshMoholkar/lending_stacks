@@ -11,8 +11,8 @@ function Hero() {
           Innovative Lending Marketplace
         </h2>
         <div className="flex flex-col md:flex-row gap-8 mt-4 md:gap-20">
-          <Button delay={1} text="Contact Us" />
-          <Button delay={1} text="Apply" />
+          <Button text="Contact Us" />
+          <Button text="Apply" />
         </div>
         <img
           src="hero-bg.jpg"
