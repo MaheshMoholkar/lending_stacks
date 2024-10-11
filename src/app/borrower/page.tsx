@@ -1,7 +1,7 @@
 import React from "react";
 import ContactForm from "@/components/ContactForm";
 
-function ContactUs() {
+function Borrower() {
   return (
     <div className="flex flex-col lg:flex-row min-h-screen">
       {/* Left half - Information */}
@@ -15,8 +15,9 @@ function ContactUs() {
             understand that every financial journey is unique, which is why we
             offer tailored solutions for our clients.
             <p className="mt-2">
-              From competitive loan options to expert guidance, we're here to
-              stack the odds in your favor. Let's build your financial success!
+              From competitive loan options to expert guidance, we&apos;re here
+              to stack the odds in your favor. Let&apos;s build your financial
+              success!
             </p>
           </div>
         </div>
@@ -28,4 +29,4 @@ function ContactUs() {
   );
 }
 
-export default ContactUs;
+export default Borrower;
