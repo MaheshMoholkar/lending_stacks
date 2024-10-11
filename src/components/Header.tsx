@@ -1,64 +1,53 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { SlideDown, SlideLeft, SlideRight } from "../animations/animate";
 import { useRouter } from "next/navigation";
 
 const Header = ({ styles }: { styles: string }) => {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navLinks = [
-    "About Us",
-    "Borrower",
-    "Referrals",
-    "Brokers",
-    "Lenders",
-    "Funded Loans",
-    "Resources",
+    { name: "About Us", path: "/about-us" },
+    { name: "Borrower", path: "/borrower" },
+    { name: "Referrals", path: "/referrals" },
+    { name: "Brokers", path: "/brokers" },
+    { name: "Lenders", path: "/lenders" },
+    { name: "Funded Loans", path: "/funded-loans" },
+    { name: "Resources", path: "/resources" },
   ];
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
+  const handleNavigation = (path: string) => {
+    router.push(path);
+    setIsMenuOpen(false); // Close the mobile menu after navigation
+  };
+
   return (
     <header className="relative">
       <div className={`z-10 text-white px-4 md:px-20 pt-4 ${styles}`}>
         <div className="container mx-auto flex justify-between items-center">
-          <motion.img
-            onClick={() => router.push("")}
-            variants={SlideRight(0.2, 100)}
-            initial="initial"
-            whileInView="animate"
+          <img
+            onClick={() => handleNavigation("/")}
             src="logo.png"
             alt="logo"
             className="w-32 max-w-full cursor-pointer"
           />
           <nav className="hidden md:flex space-x-4">
             {navLinks.map((link, index) => (
-              <motion.a
-                variants={SlideDown(index / 10, 50)}
-                initial="initial"
-                whileInView="animate"
-                key={link}
-                href="#"
-                className="hover:text-gray-300"
+              <a
+                key={link.name}
+                onClick={() => handleNavigation(link.path)}
+                className="hover:text-gray-300 cursor-pointer"
               >
-                {link}
-              </motion.a>
+                {link.name}
+              </a>
             ))}
           </nav>
-          <motion.button
-            variants={SlideLeft(0.2, 15)}
-            initial="initial"
-            whileInView="animate"
-            className="md:hidden"
-            onClick={toggleMenu}
-          >
+          <button className="md:hidden" onClick={toggleMenu}>
             <Menu width={32} />
-          </motion.button>
+          </button>
         </div>
 
         {/* Mobile Drawer */}
@@ -75,36 +64,25 @@ const Header = ({ styles }: { styles: string }) => {
           }`}
         >
           <div className="flex justify-between items-center p-4">
-            <motion.img
-              variants={SlideDown(0.2, 50)}
-              initial="initial"
-              whileInView="animate"
+            <img
               src="logo.png"
               alt="logo"
               className="w-32 max-w-full"
+              onClick={() => handleNavigation("/")}
             />
-            <motion.button
-              variants={SlideDown(0.4, 50)}
-              initial="initial"
-              whileInView="animate"
-              onClick={toggleMenu}
-              className="text-white"
-            >
+            <button onClick={toggleMenu} className="text-white">
               <X width={32} />
-            </motion.button>
+            </button>
           </div>
           <nav className="flex flex-col space-y-8 px-4 py-4">
             {navLinks.map((link, index) => (
-              <motion.a
-                variants={SlideLeft(index / 10, 50)}
-                initial="initial"
-                whileInView="animate"
-                key={link}
-                href="#"
-                className="pl-10 hover:text-gray-300"
+              <a
+                key={link.name}
+                onClick={() => handleNavigation(link.path)}
+                className="pl-10 hover:text-gray-300 cursor-pointer"
               >
-                {link}
-              </motion.a>
+                {link.name}
+              </a>
             ))}
           </nav>
         </div>

@@ -1,7 +1,3 @@
-"use client";
-
-import { SlideLeft } from "@/animations/animate";
-import { motion } from "framer-motion";
 import Image from "next/image";
 
 const loanTypes = [
@@ -51,11 +47,8 @@ function Features() {
         </h2>
         <div className={`${getGridClasses()} gap-7 md:gap-14`}>
           {loanTypes.map((loan, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={SlideLeft(index / 4, 50)}
-              initial="initial"
-              whileInView="animate"
               className={`flex flex-col items-center ${getItemClasses(index)}`}
             >
               <div className="flex items-center justify-center w-20 h-20 md:w-16 md:h-16">
@@ -64,7 +57,7 @@ function Features() {
               <p className="text-xs text-gray-600 font-semibold text-center">
                 {loan.name}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -1,8 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { SlideLeft, SlideRight } from "../animations/animate";
-
 function CustomerSegments() {
   const segments = [
     {
@@ -37,23 +32,15 @@ function CustomerSegments() {
                 : "md:flex-row md:space-x-16 md:gap-24"
             } items-center`}
           >
-            <motion.div
-              variants={SlideRight(index / 5, 50)}
-              initial="initial"
-              whileInView="animate"
-              className="flex flex-col items-center md:items-start max-w-72"
-            >
+            <div className="flex flex-col items-center md:items-start max-w-72">
               <p className="text-xl md:text-3xl font-bold text-gray-600 mb-4 mt-6 md:mt-0">
                 {segment.title}:
               </p>
               <p className="text-lg md:text-2xl text-center md:text-start text-gray-600">
                 {segment.text}
               </p>
-            </motion.div>
-            <motion.img
-              variants={SlideLeft(index / 5, 50)}
-              initial="initial"
-              whileInView="animate"
+            </div>
+            <img
               src={segment.img}
               alt={segment.imgAlt}
               className="w-32 md:w-64"
